@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete Natjecanje</title>
+</head>
+<body>
+    <h1>Delete Natjecanje</h1>
+    <p>Are you sure you want to delete "{{ natjecanje.naziv }}"?</p>
+    <form method="post">
+        {% csrf_token %}
+        <input type="submit" value="Confirm Delete">
+    </form>
+</body>
+</html>

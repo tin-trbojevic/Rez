@@ -1,0 +1,28 @@
+{% extends "homepage.html" %}
+
+{% block content %}
+<h2>Timovi</h2>
+{% if user.is_authenticated %}
+<a href="{% url 'sportovi:create_tim' %}">Add Tim</a>
+{% endif %}
+
+<ul>
+    {% for tim in timovi %}
+    <li>
+        <a href="{% url 'sportovi:rezultati_timova' tim.pk %}">{{ tim.naziv }}</a>
+        
+        {% if user.is_authenticated %}
+        <form method="get" action="{% url 'sportovi:update_tim' tim.pk %}" style="display: inline;">
+          <button type="submit">Update</button>
+        </form>
+
+        <form method="post" action="{% url 'sportovi:delete_tim' tim.pk %}" style="display: inline;">
+          {% csrf_token %}
+          <button type="submit">Delete</button>
+        </form>
+        {% endif %}
+
+      </li>
+    {% endfor %}
+</ul>
+{% endblock %}

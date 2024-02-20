@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete Utakmica</title>
+</head>
+<body>
+    <h1>Delete Utakmica</h1>
+    <p>Are you sure you want to delete "{{ rezulatat.naziv }}"?</p>
+    <form method="post">
+        {% csrf_token %}
+        <input type="submit" value="Confirm Delete">
+    </form>
+</body>
+</html>

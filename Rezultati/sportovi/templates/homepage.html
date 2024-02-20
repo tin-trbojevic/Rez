@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+</head>
+
+<body>
+    {% if request.user.is_authenticated %}
+        <p>Your username: <strong>{{ request.user.username }}</strong></p>
+        <a href="{% url 'sportovi:logout' %}">Logout</a>
+    {% else %}
+        <a href="{% url 'sportovi:login' %}">Login</a>
+        <a href="{% url 'sportovi:signup' %}">Signup</a>
+    {% endif %}
+
+    <h1>Rezultati</h1>
+    <div id="sidebar">
+        {% block sidebar %}
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/sportovi">Sportovi</a></li>
+            <li><a href="/natjecanje">Natjecanja</a></li>
+            <li><a href="/timovi">Timovi</a></li>
+            <li><a href="/rezultati">Rezultati utakmica</a></li>
+
+
+
+        </ul>
+        {% endblock %}
+    </div>
+
+    <div class="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+
+</html>
